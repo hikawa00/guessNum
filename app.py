@@ -276,9 +276,9 @@ with col_right:
     )
     if st.session_state.expander_walkthrough:
         if not st.session_state.history:
-            st.caption("暂无步骤执行。请在左侧提交猜测或点击算法按钮，系统将动态在此组装论文所需的 Walkthrough 文本。")
+            st.caption("暂无步骤执行。请在左侧提交猜测或点击算法按钮，系统将动态在此生成案例明细。")
         else:
-            st.markdown("#### 📝 动态组装的学术案例明细：")
+            st.markdown("#### 📝 案例明细：")
             if len(st.session_state.current_space) == 1:
                 walkthrough_text = f"**案例研究**：设题者锁定的秘密数字为 `{st.session_state.secret}`。\n\n"
             else:
