@@ -6,7 +6,7 @@ import seaborn as sns
 from collections import Counter
 
 # 学术主题宽屏配置
-st.set_page_config(page_title="Bulls and Cows 动态熵流分析系统", page_icon="🔮", layout="wide")
+st.set_page_config(page_title="Bulls and Cows 动态分析系统", page_icon="🔮", layout="wide")
 
 # 加宽Sidebar
 st.markdown("""
@@ -124,7 +124,7 @@ with col_left:
               delta=f"已抹杀 {5040 - curr_size} 个错误路径" if curr_size < 5040 else None, delta_color="inverse")
     
     if curr_size == 1:
-        st.success(f"🎉 破译成功！最终锁定的唯一真理答案是：**{st.session_state.current_space[0]}**")
+        st.success(f"🎉 破译成功！最终锁定的唯一答案是：**{st.session_state.current_space[0]}**")
         if st.session_state.mode == "隐藏答案模式（玩家自主对局）":
             st.balloons()
     elif curr_size == 0:
@@ -172,7 +172,7 @@ with col_left:
                     st.write(f"📈 **预计单步杀伤力**: **{(1-remaining_ratio)*100:.2f}%**")
 
                 if len(st.session_state.history) > 0 and user_input not in set(st.session_state.current_space):
-                    st.caption("💡 【策略分析】您输入的数字目前已不在右侧绿色的候选空间中。这属于’交叉试探’策略，在信息论中，有时选择候选外的词能带来更高的熵（空间切分更均匀）哦！")
+                    st.caption("💡 【策略分析】您输入的数字目前已不在右侧绿色的候选空间中。这属于’交叉试探’策略，有时选择候选外的词能带来更高的收益哦！")
             else:
                 st.warning("⚠️ 请输入合法的4位互不重复的数字！")
         elif len(user_input) > 0:
@@ -226,7 +226,7 @@ with col_right:
     st.header("🔬 科学实证与动态图表看台")
     
     if len(st.session_state.history) > 0:
-        st.subheader("📈 对局多维指标演进曲线（包含经典倒 U 型信息熵走势）")
+        st.subheader("📈 对局多维指标演进曲线")
         
         # 组装作图数据
         rounds = list(range(1, len(st.session_state.history) + 1))
@@ -265,13 +265,13 @@ with col_right:
         fig.tight_layout()
         st.pyplot(fig)
     else:
-        st.info("💡 游戏开始推进后，此处会动态绘制出论文最核心的【倒 U 型期望熵流走势图】与【空间残余量指数暴跌曲线】的双轴图。")
+        st.info("💡 游戏开始推进后，此处会动态绘制出期望熵流走势图与空间残余量曲线的双轴图。")
 
     # ------------------------------------------------------------------
     # 板块二：论文级对局案例模拟（支持一键折叠）
     # ------------------------------------------------------------------
     st.session_state.expander_walkthrough = st.checkbox(
-        "📖 查阅本文物化案例研究决策链明细（可用于论文 Case Study 复制）",
+        "📖 查阅本文案例研究决策链明细",
         value=st.session_state.expander_walkthrough
     )
     if st.session_state.expander_walkthrough:
