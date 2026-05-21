@@ -75,7 +75,7 @@ if "game_initialized" not in st.session_state:
 # ==========================================
 # UI 头部与控制面板
 # ==========================================
-st.title("🔮 猜数字（Bulls & Cows）动态熵流演进与全景可视化系统")
+st.title("🔮 猜数字（Bulls & Cows）动态熵流演进可视化系统")
 st.markdown("---")
 
 with st.sidebar:
